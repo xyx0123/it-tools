@@ -23,6 +23,8 @@ const commitSha = config.app.lastCommitSha.slice(0, 7);
 const { tracker } = useTracker();
 const { t } = useI18n();
 const showPaymentPanel = ref(false);
+const wechatQrSrc = '/payments/wechat-qr.JPG';
+const alipayQrSrc = '/payments/alipay-qr.JPG';
 
 const toolStore = useToolStore();
 const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
@@ -156,7 +158,7 @@ const tools = computed<ToolCategory[]>(() => [
                 Wechat:
               </div>
               <div class="payment-qr-box">
-                <img class="payment-qr-image" :src="'/payments/wechat-qr.JPG'" alt="Wechat QR code">
+                <img class="payment-qr-image" :src="wechatQrSrc" alt="Wechat QR code">
               </div>
             </div>
 
@@ -165,7 +167,7 @@ const tools = computed<ToolCategory[]>(() => [
                 Alipay:
               </div>
               <div class="payment-qr-box">
-                <img class="payment-qr-image" :src="'/payments/alipay-qr.JPG'" alt="Alipay QR code">
+                <img class="payment-qr-image" :src="alipayQrSrc" alt="Alipay QR code">
               </div>
             </div>
 

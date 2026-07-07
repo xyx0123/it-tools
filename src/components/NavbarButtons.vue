@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconBrandGithub, IconBrandX, IconMoon, IconSun } from '@tabler/icons-vue';
+import { IconBrandGithub, IconMoon, IconSun } from '@tabler/icons-vue';
 import { useStyleStore } from '@/stores/style.store';
 
 const styleStore = useStyleStore();

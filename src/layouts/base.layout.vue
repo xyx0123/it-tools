@@ -22,6 +22,7 @@ const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const { tracker } = useTracker();
 const { t } = useI18n();
+const showPaymentPanel = ref(false);
 
 const toolStore = useToolStore();
 const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
@@ -63,7 +64,7 @@ const tools = computed<ToolCategory[]>(() => [
           <div>
             IT-Tools
 
-            <c-link target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
+            <c-link target="_blank" rel="noopener" :href="`https://github.com/xyx0123/it-tools/tree/v${version}`">
               v{{ version }}
             </c-link>
 
@@ -73,11 +74,18 @@ const tools = computed<ToolCategory[]>(() => [
                 target="_blank"
                 rel="noopener"
                 type="primary"
-                :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
+                :href="`https://github.com/xyx0123/it-tools/tree/${commitSha}`"
               >
                 {{ commitSha }}
               </c-link>
             </template>
+          </div>
+          <div>
+            Original author: Corentin Thomasset, consider
+            <c-link target="_blank" rel="noopener" href="https://www.buymeacoffee.com/cthmsst">
+              sponsoring him
+            </c-link>
+            .
           </div>
           <div>
             © {{ new Date().getFullYear() }}
@@ -123,18 +131,75 @@ const tools = computed<ToolCategory[]>(() => [
         <c-tooltip position="bottom" :tooltip="$t('home.support')">
           <c-button
             round
-            href="https://www.buymeacoffee.com/cthmsst"
-            rel="noopener"
-            target="_blank"
             class="support-button"
             :bordered="false"
-            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
+            @click="() => {
+              showPaymentPanel = true;
+              tracker.trackEvent({ eventName: 'Support button clicked' });
+            }"
           >
             {{ $t('home.buyMeACoffee') }}
             <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
           </c-button>
         </c-tooltip>
       </div>
+
+      <transition name="payment-panel-fade">
+        <div v-if="showPaymentPanel" class="payment-panel-mask" @click="showPaymentPanel = false">
+          <div class="payment-panel" @click.stop>
+            <button class="payment-panel-close" @click="showPaymentPanel = false">
+              Close
+            </button>
+
+            <div class="payment-item">
+              <div class="payment-title">
+                Wechat:
+              </div>
+              <div class="payment-qr-box">
+                <img class="payment-qr-image" src="/payments/wechat-qr.JPG" alt="Wechat QR code">
+              </div>
+            </div>
+
+            <div class="payment-item">
+              <div class="payment-title">
+                Alipay:
+              </div>
+              <div class="payment-qr-box">
+                <img class="payment-qr-image" src="/payments/alipay-qr.JPG" alt="Alipay QR code">
+              </div>
+            </div>
+
+            <div class="payment-attribution">
+              <div class="payment-attribution-title">
+                Attribution
+              </div>
+              <ul class="payment-attribution-list">
+                <li>
+                  This project is forked from CorentinTh/it-tools and is based on the excellent work of Corentin Thomasset.
+                  This fork will continue to evolve with additional features and improvements while respecting the original GPL-3.0 license.
+                </li>
+                <li>
+                  This service is free to use and will remain free. Running the servers, maintaining the service,
+                  and developing new features all require time and resources.
+                  If you find it useful and would like to support the continued development of this fork,
+                  please consider making a voluntary donation.
+                </li>
+                <li>
+                  Original project author: Corentin Thomasset
+                </li>
+              </ul>
+              <div class="payment-attribution-support">
+                Consider
+                <c-link target="_blank" rel="noopener" href="https://buymeacoffee.com/cthmsst">
+                  sponsoring him
+                </c-link>
+                .
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+
       <slot />
     </template>
   </MenuLayout>
@@ -163,6 +228,113 @@ const tools = computed<ToolCategory[]>(() => [
     padding-left: 30px;
     padding-right: 30px;
   }
+}
+
+.payment-panel-fade-enter-active,
+.payment-panel-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.payment-panel-fade-enter-from,
+.payment-panel-fade-leave-to {
+  opacity: 0;
+}
+
+.payment-panel-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.payment-panel {
+  width: min(480px, 100%);
+  background: v-bind('themeVars.cardColor');
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.payment-panel-close {
+  margin-left: auto;
+  display: block;
+  border: 0;
+  background: transparent;
+  color: v-bind('themeVars.textColor2');
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.payment-item {
+  &:not(:last-child) {
+    margin-bottom: 14px;
+  }
+}
+
+.payment-attribution {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(120, 120, 120, 0.08);
+  border: 1px solid rgba(120, 120, 120, 0.16);
+  color: v-bind('themeVars.textColor2');
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.payment-attribution-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.payment-attribution-list {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 6px;
+}
+
+.payment-attribution-list li {
+  margin: 0;
+}
+
+.payment-attribution-support {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(120, 120, 120, 0.3);
+}
+
+.payment-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.payment-qr-box {
+  width: 190px;
+  height: 190px;
+  border: 1px dashed rgba(120, 120, 120, 0.5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v-bind('themeVars.textColor3');
+}
+
+.payment-qr-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
 }
 
 .footer {

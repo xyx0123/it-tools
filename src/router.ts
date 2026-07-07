@@ -26,11 +26,12 @@ const router = createRouter({
       name: 'home',
       component: HomePage,
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('./pages/About.vue'),
-    },
+    // About page is temporarily disabled.
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   component: () => import('./pages/About.vue'),
+    // },
     ...toolsRoutes,
     ...toolsRedirectRoutes,
     ...(config.app.env === 'development' ? demoRoutes : []),

@@ -9,7 +9,6 @@ import SunIcon from '~icons/mdi/white-balance-sunny';
 import GithubIcon from '~icons/mdi/github';
 import BugIcon from '~icons/mdi/bug-outline';
 import DiceIcon from '~icons/mdi/dice-5';
-import InfoIcon from '~icons/mdi/information-outline';
 
 export const useCommandPaletteStore = defineStore('command-palette', () => {
   const toolStore = useToolStore();
@@ -48,7 +47,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     },
     {
       name: 'Github repository',
-      href: 'https://github.com/CorentinTh/it-tools',
+      href: 'https://github.com/xyx0123/it-tools',
       category: 'External',
       description: 'View the source code of it-tools on Github.',
       keywords: ['github', 'repo', 'repository', 'source', 'code'],
@@ -57,19 +56,12 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     {
       name: 'Report a bug or an issue',
       description: 'Report a bug or an issue to help improve it-tools.',
-      href: 'https://github.com/CorentinTh/it-tools/issues/new/choose',
+      href: 'https://github.com/xyx0123/it-tools/issues/new/choose',
       category: 'Actions',
       keywords: ['report', 'issue', 'bug', 'problem', 'error'],
       icon: BugIcon,
     },
-    {
-      name: 'About',
-      description: 'Learn more about IT-Tools.',
-      to: '/about',
-      category: 'Pages',
-      keywords: ['about', 'learn', 'more', 'info', 'information'],
-      icon: InfoIcon,
-    },
+    // About page is temporarily disabled.
   ];
 
   const { searchResult } = useFuzzySearch({

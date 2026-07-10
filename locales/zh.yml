@@ -388,3 +388,7 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  certificate-viewer:
+    title: 证书查看器
+    description: 解析并检查 X.509 证书链。查看主题、签发者、有效期、SAN 条目和指纹。

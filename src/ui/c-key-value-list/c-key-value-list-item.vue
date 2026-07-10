@@ -22,6 +22,6 @@ const { item } = toRefs(props);
     {{ item.placeholder ?? 'N/A' }}
   </div>
   <div v-else>
-    <c-text-copyable :value="item.value" :show-icon="item.showCopyButton ?? true" />
+    <c-text-copyable :value="item.value" :displayed-value="item.displayedValue" :show-icon="item.showCopyButton ?? true" />
   </div>
 </template>

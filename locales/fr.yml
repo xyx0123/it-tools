@@ -65,6 +65,10 @@ tools:
     text: Texte
     data: Données
 
+  certificate-viewer:
+    title: Visionneuse de certificats
+    description: Analysez et inspectez des chaînes de certificats X.509. Affichez le sujet, l'émetteur, les dates de validité, les entrées SAN et les empreintes.
+
   token-generator:
     title: Générateur de token
     description: >-

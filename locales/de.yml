@@ -454,3 +454,7 @@ tools:
   text-to-binary:
     title: Text zu ASCII-Binär
     description: Konvertiere Text in seine ASCII-Binärrepräsentation und umgekehrt.
+
+  certificate-viewer:
+    title: Zertifikatsbetrachter
+    description: Parse und untersuche X.509-Zertifikatsketten. Zeige Subject, Issuer, Gültigkeitsdaten, SAN-Einträge und Fingerabdrücke an.

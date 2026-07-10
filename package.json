@@ -39,6 +39,7 @@
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
+    "@peculiar/x509": "^2.0.0",
     "@regexper/render": "^1.0.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@tabler/icons-vue": "^3.20.0",
@@ -89,6 +90,7 @@
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "randexp": "^0.5.3",
+    "reflect-metadata": "^0.2.2",
     "sql-formatter": "^13.0.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
@@ -149,5 +151,10 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vueuse/shared": "12.0.0"
+    }
   }
 }

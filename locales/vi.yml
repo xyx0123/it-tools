@@ -381,3 +381,7 @@ tools:
   text-to-binary:
     title: Chuyển đổi văn bản thành nhị phân ASCII
     description: Chuyển đổi văn bản thành biểu diễn nhị phân ASCII của nó và ngược lại.
+
+  certificate-viewer:
+    title: Trình xem chứng chỉ
+    description: Phân tích và kiểm tra chuỗi chứng chỉ X.509. Xem chủ thể, tổ chức phát hành, thời hạn hiệu lực, mục SAN và dấu vân tay.

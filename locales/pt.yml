@@ -70,3 +70,7 @@ tools:
     measurement: 'Medidas'
     text: 'Texto'
     data: 'Dados'
+
+  certificate-viewer:
+    title: Visualizador de certificados
+    description: Analise e inspecione cadeias de certificados X.509. Veja assunto, emissor, datas de validade, entradas SAN e impressões digitais.

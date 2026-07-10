@@ -392,3 +392,7 @@ tools:
   text-to-binary:
     title: Tekst til ASCII binært
     description: Konverter tekst til sin ASCII binære representasjon og visa-versa.
+
+  certificate-viewer:
+    title: Sertifikatviser
+    description: Analyser og inspiser X.509-sertifikatkjeder. Vis subjekt, utsteder, gyldighetsdatoer, SAN-oppføringer og fingeravtrykk.

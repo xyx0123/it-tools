@@ -70,3 +70,7 @@ tools:
     measurement: Measurement
     text: Text
     data: Data
+
+  certificate-viewer:
+    title: Visor de certificados
+    description: Analiza e inspecciona cadenas de certificados X.509. Consulta sujeto, emisor, fechas de validez, entradas SAN y huellas digitales.

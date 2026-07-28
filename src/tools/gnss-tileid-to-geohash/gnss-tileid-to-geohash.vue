@@ -48,6 +48,20 @@ function removeOverlay() {
   bboxRectangle.value = undefined;
 }
 
+function resetMapIfContainerChanged() {
+  const currentContainer = mapElement.value;
+
+  if (!leafletMap.value || !currentContainer) {
+    return;
+  }
+
+  if (leafletMap.value.getContainer() !== currentContainer) {
+    removeOverlay();
+    leafletMap.value.remove();
+    leafletMap.value = undefined;
+  }
+}
+
 function ensureMap() {
   if (leafletMap.value || !mapElement.value) {
     return;
@@ -65,6 +79,7 @@ function ensureMap() {
 }
 
 function syncMapFromConversion() {
+  resetMapIfContainerChanged();
   ensureMap();
 
   if (!leafletMap.value || !conversionResult.value) {

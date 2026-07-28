@@ -3,7 +3,7 @@ name: ci
 on:
   pull_request:
   push:
-    branches:
+    branches: # branches to trigger the workflow on push
       - main
   workflow_dispatch:
 

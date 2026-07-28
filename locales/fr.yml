@@ -84,3 +84,7 @@ tools:
     copied: Le token a été copié
     length: Longueur
     tokenPlaceholder: Le token...
+
+  gnss-tileid-to-geohash:
+    title: GNSS tileId to GeoHash
+    description: Convert a GNSS binary tileId into a GeoHash value and preview its location on a map.

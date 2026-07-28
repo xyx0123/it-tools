@@ -74,3 +74,7 @@ tools:
   certificate-viewer:
     title: Visor de certificados
     description: Analiza e inspecciona cadenas de certificados X.509. Consulta sujeto, emisor, fechas de validez, entradas SAN y huellas digitales.
+
+  gnss-tileid-to-geohash:
+    title: GNSS tileId to GeoHash
+    description: Convert a GNSS binary tileId into a GeoHash value and preview its location on a map.

@@ -392,3 +392,7 @@ tools:
   certificate-viewer:
     title: 证书查看器
     description: 解析并检查 X.509 证书链。查看主题、签发者、有效期、SAN 条目和指纹。
+
+  gnss-tileid-to-geohash:
+    title: GNSS tileId 转 GeoHash
+    description: 将 GNSS 二进制 tileId 转换为 GeoHash，并在地图上预览位置。

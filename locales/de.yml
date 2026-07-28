@@ -458,3 +458,7 @@ tools:
   certificate-viewer:
     title: Zertifikatsbetrachter
     description: Parse und untersuche X.509-Zertifikatsketten. Zeige Subject, Issuer, Gültigkeitsdaten, SAN-Einträge und Fingerabdrücke an.
+
+  gnss-tileid-to-geohash:
+    title: GNSS tileId to GeoHash
+    description: Convert a GNSS binary tileId into a GeoHash value and preview its location on a map.

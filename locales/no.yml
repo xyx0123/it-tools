@@ -396,3 +396,7 @@ tools:
   certificate-viewer:
     title: Sertifikatviser
     description: Analyser og inspiser X.509-sertifikatkjeder. Vis subjekt, utsteder, gyldighetsdatoer, SAN-oppføringer og fingeravtrykk.
+
+  gnss-tileid-to-geohash:
+    title: GNSS tileId to GeoHash
+    description: Convert a GNSS binary tileId into a GeoHash value and preview its location on a map.

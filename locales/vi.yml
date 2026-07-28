@@ -385,3 +385,7 @@ tools:
   certificate-viewer:
     title: Trình xem chứng chỉ
     description: Phân tích và kiểm tra chuỗi chứng chỉ X.509. Xem chủ thể, tổ chức phát hành, thời hạn hiệu lực, mục SAN và dấu vân tay.
+
+  gnss-tileid-to-geohash:
+    title: GNSS tileId to GeoHash
+    description: Convert a GNSS binary tileId into a GeoHash value and preview its location on a map.

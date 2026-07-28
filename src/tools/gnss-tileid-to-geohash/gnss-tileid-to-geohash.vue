@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import markerIcon2xUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIconUrl from 'leaflet/dist/images/marker-icon.png';
+import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import { convertGnssTileIdToGeohash } from './gnss-tileid-to-geohash.service';
 import InputCopyable from '@/components/InputCopyable.vue';
 import { getErrorMessageIfThrows } from '@/utils/error';
+
+delete (L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: () => string })._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2xUrl,
+  iconUrl: markerIconUrl,
+  shadowUrl: markerShadowUrl,
+});
 
 const rawTileId = useStorage('gnss-tileid-to-geohash:raw-tileid', '1110010011001100010110011');
 const mapElement = ref<HTMLElement>();

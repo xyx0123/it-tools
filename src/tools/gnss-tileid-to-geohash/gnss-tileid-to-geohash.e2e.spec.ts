@@ -14,10 +14,10 @@ test.describe('Tool - GNSS tileId to GeoHash', () => {
 
     await expect(page.getByTestId('geohash-output')).toHaveValue('wm65m');
 
-    const frameSrc = await page.getByTestId('map-frame').getAttribute('src');
+    const mapFrame = page.getByTestId('map-frame');
 
-    expect(frameSrc).toContain('openstreetmap.org/export/embed.html');
-    expect(frameSrc).toContain('marker=');
-    expect(frameSrc).toContain('bbox=');
+    await expect(mapFrame).toBeVisible();
+    await expect(mapFrame.locator('.leaflet-marker-icon')).toHaveCount(1);
+    await expect(mapFrame.locator('.leaflet-overlay-pane path.leaflet-interactive')).toHaveCount(1);
   });
 });

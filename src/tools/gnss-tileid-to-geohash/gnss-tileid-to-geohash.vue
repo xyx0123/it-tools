@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import markerIcon2xUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIconUrl from 'leaflet/dist/images/marker-icon.png';
-import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import { convertGnssTileIdToGeohash } from './gnss-tileid-to-geohash.service';
 import InputCopyable from '@/components/InputCopyable.vue';
 import { getErrorMessageIfThrows } from '@/utils/error';
 
-delete (L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: () => string })._getIconUrl;
+const normalizedBaseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2xUrl,
-  iconUrl: markerIconUrl,
-  shadowUrl: markerShadowUrl,
+const geohashMarkerIcon = L.icon({
+  iconRetinaUrl: `${normalizedBaseUrl}leaflet/marker-icon-2x.png`,
+  iconUrl: `${normalizedBaseUrl}leaflet/marker-icon.png`,
+  shadowUrl: `${normalizedBaseUrl}leaflet/marker-shadow.png`,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41],
 });
 
 const rawTileId = useStorage('gnss-tileid-to-geohash:raw-tileid', '1110010011001100010110011');
@@ -88,7 +92,9 @@ function syncMapFromConversion() {
   const centerLatLng = L.latLng(center.lat, center.lng);
 
   if (!centerMarker.value) {
-    centerMarker.value = L.marker(centerLatLng).addTo(leafletMap.value);
+    centerMarker.value = L.marker(centerLatLng, {
+      icon: geohashMarkerIcon,
+    }).addTo(leafletMap.value);
   }
   else {
     centerMarker.value.setLatLng(centerLatLng);
